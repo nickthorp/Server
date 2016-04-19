@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HoardServer.iml" filepath="$PROJECT_DIR$/HoardServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoardServer.iml" filepath="$PROJECT_DIR$/.idea/modules/HoardServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoardServer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/HoardServer_main.iml" group="HoardServer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HoardServer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/HoardServer_test.iml" group="HoardServer" />
     </modules>
   </component>
 </project>

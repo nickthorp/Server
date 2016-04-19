@@ -10,19 +10,20 @@ import java.net.URI;
 
 /**
  * Created by Nicholas on 10/31/2015.
+ *
  */
 public class HoardServer {
 
-    public static final String BASE_API_URI = "http://localhost:8080/HoardServer/";
+    private static final String BASE_API_URI = "http://localhost:8080/HoardServer/";
 
     public static void main(String[] args) throws Exception {
-        HoardServerServer server = new HoardServerServer();
+        HoardServer server = new HoardServer();
         HttpServer httpServer = server.startServer();
-        System.in.read();
+        //System.in.read();
         httpServer.shutdown();
     }
 
-    public HttpServer startServer(){
+    HttpServer startServer(){
         ResourceConfig resourceConfig = new ResourceConfig().packages("com");
         HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_API_URI), resourceConfig);
         httpServer.getServerConfiguration().addHttpHandler(getHttpHandler(), "/page");

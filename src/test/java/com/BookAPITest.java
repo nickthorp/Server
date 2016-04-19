@@ -10,19 +10,19 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.*;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Created by Nicholas on 10/31/2015.
+ *
  */
 public class BookAPITest {
 
-    private static HttpServer HoardServerServer;
+    private static HttpServer HoardServer;
     private ObjectMapper objectMapper;
     private WebTarget itemsTarget;
     private ArrayList<Book> bookList;
@@ -51,7 +51,7 @@ public class BookAPITest {
 
     @BeforeClass
     public static void beforeTests(){
-        HoardServerServer = new HoardServerServer().startServer();
+        HoardServer = new HoardServer().startServer();
     }
 
     @After
@@ -61,7 +61,7 @@ public class BookAPITest {
 
     @AfterClass
     public static void afterTests(){
-        HoardServerServer.shutdown();
+        HoardServer.shutdown();
     }
 
     @Test
