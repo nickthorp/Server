@@ -1,26 +1,52 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+    }
+}
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
 apply plugin: 'war'
 apply plugin: 'application'
 
-//sourceCompatibility = 1.8
-version = '1.0'
-//mainClassName = 'com.HoardServer'
+jar {
+    baseName = 'gs-spring-boot'
+    version = '0.1.0'
+}
 
 repositories {
     mavenCentral()
 }
 
+sourceCompatibility = 1.8
+// testCompatibility = 1.8
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
     testCompile group: 'org.skyscreamer', name: 'jsonassert', version: '1.2.3'
-    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.2'
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.4.Final'
     compile group: 'org.hibernate', name: 'hibernate-annotations', version: '3.5.6-Final'
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.5.8'
-    compile group: 'javassist', name: 'javassist', version: '3.12.1.GA'
     compile group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.7'
     compile group: 'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.7'
     compile group: 'org.glassfish.jersey.containers', name: 'jersey-container-grizzly2-http', version: '2.7'
-    compile group: 'org.jasypt', name: 'jasypt', version: '1.9.2'
+    // tag::jetty[]
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    // end::jetty[]
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
 }

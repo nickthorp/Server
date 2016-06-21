@@ -18,7 +18,7 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8">
+    <bytecodeTargetLevel>
       <module name="HoardServer_main" target="1.8" />
       <module name="HoardServer_test" target="1.8" />
     </bytecodeTargetLevel>
